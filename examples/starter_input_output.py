@@ -21,6 +21,12 @@ outputBoard = community_tca9534.TCA9534(i2c,address=0x26)
 #create pixel instance
 pixel = neopixel.NeoPixel(board.NEOPIXEL,1)
 
+# Create pixel colors
+RED = (255,0,0)
+GREEN = (0,255,0)
+BLUE = (0,0,255)
+OFF = (0,0,0)
+
 # Main loop:
 while True:
     # Sets instance of switches connected to P0 and P1 on the input board
@@ -31,20 +37,24 @@ while True:
     output1 = outputBoard.set_gpio(0,0)
     output2 = outputBoard.set_gpio(1,0)
 
+    # Get status of outputs for debug purposes
+    output1_status = outputBoard.get_gpio(0)
+    output2_status = outputBoard.get_gpio(1)
+
     # If switch 1/P0 is pressed => output 1/P0 turns on
     if not switch1:
-        pixel.fill((0,255,0))
+        pixel.fill(GREEN)
         print('Switch 1 pressed')
         output1 = outputBoard.set_gpio(0,1)
-        print('output 1 activated')
+        print("Output 1 status: {0}".format(output1_status))
 
     # If switch 2/P1 is pressed => output 2/P1 turns on
     if not switch2:
-        pixel.fill((0,0,255))
+        pixel.fill(BLUE)
         print('Switch 2 pressed')
         output2 = outputBoard.set_gpio(1,1)
-        print('output 2 activated')
+        print("Output 2 status: {0}".format(output2_status))
 
-    # Delay for .2 seconds.
+    # Delay for .2 seconds -- change the value in the parentheses to lengthen the amount of time the output remains on.
     time.sleep(0.2)
-    pixel.fill((0,0,0))
+    pixel.fill(OFF)
