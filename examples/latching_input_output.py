@@ -25,6 +25,7 @@ pixel = neopixel.NeoPixel(board.NEOPIXEL,1)
 RED = (255,0,0)
 GREEN = (0,255,0)
 BLUE = (0,0,255)
+OFF = (0,0,0)
 
 # Create variables to store states of Switch 1 press and latch state
 switch1 = inputBoard.get_gpio(0)
@@ -33,7 +34,7 @@ switch1_latch = False
 
 # Create variables to store states of Switch 2 press and latch state
 switch2 = inputBoard.get_gpio(1)
-switch2_prev_state = inputBoard.get_gpio(0)
+switch2_prev_state = inputBoard.get_gpio(1)
 switch2_latch = False
 
 # Start with both outputs in the off state
@@ -80,7 +81,7 @@ while True:
 
         elif not switch2 and switch2_latch:
             print("Switch 2 Latch Stop")
-            pixel.fill((0,0,0))
+            pixel.fill(OFF)
             output2 = outputBoard.set_gpio(1,0)
             # Uncomment line below if you need to turn off the latch for both outputs when Switch 2 is pressed again
             #output1 = outputBoard.set_gpio(0,0)

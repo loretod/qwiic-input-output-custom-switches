@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2017 Scott Shawcroft, written for Adafruit Industries
 # SPDX-FileCopyrightText: Copyright (c) 2021 Milad Hajihassan for Milador
-# Demo of reading GPIO's status in TCA9534 bus-expander and an output pin change- Used for switch access assistive technology
+# Demo of reading GPIO's status in TCA9534 bus-expander and an output pin change- Used for momentary switch access assistive technology
 #
 # SPDX-License-Identifier: MIT
 
